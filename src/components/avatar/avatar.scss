@@ -1,0 +1,22 @@
+.avatar {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .avatar-generator, .avatar-renderer {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+  }
+
+  //.avatar-generator {
+  //
+  //}
+  //
+  //.avatar-renderer {
+  //
+  //}
+}
