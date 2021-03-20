@@ -24,17 +24,21 @@ const addLayerToAvatar = (context: CanvasRenderingContext2D, img: string, coords
 
 const getCoords = (x: number, y: number): Coords => ({x, y})
 const createAvatar = async (context: CanvasRenderingContext2D, avatarSettings: AvatarSettings) => {
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].backgrounds[avatarSettings.background], getCoords(0, 0))
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].faces[avatarSettings.face], getCoords(0, 0))
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].clothes[avatarSettings.clothes], getCoords(0, 0))
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].eyes[avatarSettings.eyes], getCoords(0, 0))
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].hair[avatarSettings.hair], getCoords(0, 0))
-  await addLayerToAvatar(context, imgs[avatarSettings.gender].mouths[avatarSettings.mouth], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.background[avatarSettings.sprites.background], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.face[avatarSettings.sprites.face], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.clothes[avatarSettings.sprites.clothes], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.eyes[avatarSettings.sprites.eyes], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.hair[avatarSettings.sprites.hair], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs.male.mouth[avatarSettings.sprites.mouth], getCoords(0, 0))
 }
 
 
 const AvatarRenderer: React.FC<Props> = (props: Props): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  const {
+    avatarSettings
+  } = props;
 
   useEffect(
     () => {
@@ -43,9 +47,11 @@ const AvatarRenderer: React.FC<Props> = (props: Props): JSX.Element => {
         return;
       }
 
+      context.clearRect(0, 0, 400, 400);
+
       createAvatar(context, props.avatarSettings)
     },
-    []
+    [avatarSettings]
     )
 
     return (

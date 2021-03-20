@@ -1,17 +1,25 @@
 import React from 'react';
+import {AvatarSettings, Sprites} from "./avatar";
+import SpriteCarousel from "./sprite-carousel";
 
 type Props = {
-
+  avatarSettings: AvatarSettings
+  onAvatarSettingChange: (item: keyof Sprites, indexChange: number) => void
 };
 
 const AvatarGenerator: React.FC<Props> = (props: Props): JSX.Element => {
-    // const {
-    //
-    // } = props;
+    const {
+      avatarSettings,
+      onAvatarSettingChange,
+    } = props;
 
     return (
       <div>
-          Am I good?
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="background"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
       </div>
     );
 };

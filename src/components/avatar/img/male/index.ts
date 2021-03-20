@@ -169,16 +169,16 @@ import mouth26 from './mouth26.png';
 
 
 type Male = {
-  backgrounds: any[],
+  background: any[],
   clothes: any[],
   eyes: any[],
-  faces: any[],
+  face: any[],
   hair: any[],
-  mouths: any[]
+  mouth: any[]
 }
 
 const male: Male = {
-  backgrounds: [
+  background: [
     background1,
     background2,
     background3,
@@ -286,7 +286,7 @@ const male: Male = {
     eye31,
     eye32,
   ],
-  faces: [
+  face: [
     face1,
     face2,
     face3,
@@ -330,7 +330,7 @@ const male: Male = {
     hair35,
     hair36,
   ],
-  mouths: [
+  mouth: [
     mouth1,
     mouth2,
     mouth3,
