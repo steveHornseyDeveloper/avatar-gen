@@ -1,15 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 
-import background from './img/male/background1.png'
-import face from './img/male/face4.png'
-import clothes from './img/male/clothes24.png'
-import eyes from './img/male/eye16.png'
-import hair from './img/male/hair23.png'
-import mouth from './img/male/mouth24.png'
-
+import imgs from './img'
+import {AvatarSettings} from "./avatar";
 
 type Props = {
-
+  avatarSettings: AvatarSettings
 };
 
 type Coords = {
@@ -28,13 +23,13 @@ const addLayerToAvatar = (context: CanvasRenderingContext2D, img: string, coords
 })
 
 const getCoords = (x: number, y: number): Coords => ({x, y})
-const createAvatar = async (context: CanvasRenderingContext2D) => {
-  await addLayerToAvatar(context, background, getCoords(0, 0))
-  await addLayerToAvatar(context, face, getCoords(0, 0))
-  await addLayerToAvatar(context, clothes, getCoords(0, 0))
-  await addLayerToAvatar(context, eyes, getCoords(0, 0))
-  await addLayerToAvatar(context, hair, getCoords(0, 0))
-  await addLayerToAvatar(context, mouth, getCoords(0, 0))
+const createAvatar = async (context: CanvasRenderingContext2D, avatarSettings: AvatarSettings) => {
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].backgrounds[avatarSettings.background], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].faces[avatarSettings.face], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].clothes[avatarSettings.clothes], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].eyes[avatarSettings.eyes], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].hair[avatarSettings.hair], getCoords(0, 0))
+  await addLayerToAvatar(context, imgs[avatarSettings.gender].mouths[avatarSettings.mouth], getCoords(0, 0))
 }
 
 
@@ -48,7 +43,7 @@ const AvatarRenderer: React.FC<Props> = (props: Props): JSX.Element => {
         return;
       }
 
-      createAvatar(context)
+      createAvatar(context, props.avatarSettings)
     },
     []
     )
