@@ -20,6 +20,31 @@ const AvatarGenerator: React.FC<Props> = (props: Props): JSX.Element => {
           spriteName="background"
           onAvatarSettingChange={onAvatarSettingChange}
         />
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="face"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="clothes"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="eyes"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="hair"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
+        <SpriteCarousel
+          avatarSettings={avatarSettings}
+          spriteName="mouth"
+          onAvatarSettingChange={onAvatarSettingChange}
+        />
       </div>
     );
 };
